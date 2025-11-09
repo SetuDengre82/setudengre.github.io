@@ -3,223 +3,279 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Fuel Scam Complaint - Report Petrol Fraud Instantly</title>
+    <title>Seasonwala Cafe - Fresh Seasonal Tea, Juice & Snacks | Katni Bus Stand</title>
+    <meta name="description" content="Seasonwala Cafe - Katni's first seasonal cafe! Fresh masala chai, mosambi juice, poha, gajar halwa & more. Made fresh daily. Near Bus Stand."/>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        *, ::before, ::after { box-sizing: border-box; }
-        html { line-height: 1.5; font-family: ui-sans-serif, system-ui, sans-serif; }
-        body { margin: 0; background: #f3f4f6; color: #1f2937; }
-        .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
-        .bg-blue-600 { background-color: #2563eb; }
-        .bg-white { background-color: #fff; }
-        .bg-gray-100 { background-color: #f3f4f6; }
-        .bg-gray-200 { background-color: #e5e7eb; }
-        .text-white { color: #fff; }
-        .text-blue-600 { color: #2563eb; }
-        .text-gray-600 { color: #4b5563; }
-        .text-gray-800 { color: #1f2937; }
-        .text-center { text-align: center; }
-        .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
-        .py-10 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
-        .px-4 { padding-left: 1rem; padding-right: 1rem; }
-        .p-4 { padding: 1rem; }
-        .p-6 { padding: 1.5rem; }
-        .mb-4 { margin-bottom: 1rem; }
-        .mb-6 { margin-bottom: 1.5rem; }
-        .mt-2 { margin-top: 0.5rem; }
-        .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
-        .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
-        .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
-        .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
-        .font-bold { font-weight: 700; }
-        .font-semibold { font-weight: 600; }
-        .rounded-lg { border-radius: 0.5rem; }
-        .shadow-md { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1); }
-        .grid { display: grid; }
-        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-        .gap-4 { gap: 1rem; }
-        .gap-6 { gap: 1.5rem; }
-        .max-w-4xl { max-width: 56rem; }
-        .max-w-3xl { max-width: 48rem; }
-        .max-w-2xl { max-width: 42rem; }
-        input, select, textarea {
-            width: 100%; padding: 0.75rem; margin: 0.5rem 0; border: 1px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fff8f0;
+            color: #333;
+            line-height: 1.6;
         }
-        button {
-            background: #2563eb; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 0.5rem; cursor: pointer; font-size: 1.1rem;
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
         }
-        button:hover { background: #1d4ed8; }
-        .file-label {
-            display: block; background: #dbeafe; padding: 1rem; border-radius: 0.5rem; text-align: center; cursor: pointer; margin: 1rem 0;
+        header::before {
+            content: "Fresh Cup"; position: absolute; top: -50%; left: -50%; font-size: 20rem; opacity: 0.1; 
+            font-family: 'Pacifico', cursive; transform: rotate(-15deg);
         }
-        #preview img { max-width: 100%; margin-top: 10px; border-radius: 8px; }
-        @media (min-width: 640px) { .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-        @media (min-width: 768px) { .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 4rem;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+        }
+        .tagline { font-size: 1.5rem; font-weight: 600; margin: 10px 0; }
+        .location { font-size: 1.3rem; background: rgba(0,0,0,0.2); padding: 10px 20px; border-radius: 50px; display: inline-block; margin-top: 15px; }
+
+        /* Sections */
+        section { padding: 80px 0; text-align: center; }
+        .bg-light { background: #fffaf0; }
+        h2 {
+            font-size: 2.8rem;
+            color: #ff6b35;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        h2::after {
+            content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
+            width: 80px; height: 5px; background: #f7931e; border-radius: 3px;
+        }
+
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .menu-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(255,107,53,0.2); }
+        .menu-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 20px;
+        }
+        .price {
+            font-size: 1.5rem;
+            color: #ff6b35;
+            font-weight: 700;
+        }
+        .season-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #4ade80;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .feature {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .feature h3 { color: #ff6b35; margin: 15px 0; }
+
+        /* Location */
+        .map-container {
+            margin: 40px auto;
+            max-width: 800px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #2d1b0b;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .social-links a {
+            color: white;
+            font-size: 1.8rem;
+            margin: 0 15px;
+            transition: all 0.3s;
+        }
+        .social-links a:hover { color: #ff6b35; transform: scale(1.2); }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
     </style>
 </head>
-<body class="bg-gray-100 font-sans text-gray-800">
+<body>
 
     <!-- Header -->
-    <header class="bg-blue-600 text-white py-6">
-        <div class="container mx-auto text-center">
-            <h1 class="text-4xl font-bold">Fuel Scam Complaint</h1>
-            <p class="text-xl mt-2">Report Petrol Pump Fraud & Get Justice in 30 Seconds</p>
+    <header>
+        <div class="container">
+            <h1>Seasonwala</h1>
+            <p class="tagline">Har Season Ka Swad</p>
+            <p>Fresh Tea • Juice • Seasonal Snacks</p>
+            <div class="location">Near Katni Bus Stand • Madhya Pradesh</div>
         </div>
     </header>
 
-    <!-- About -->
-    <section class="container mx-auto py-10 px-4">
-        <h2 class="text-3xl font-semibold mb-6 text-center">About This Tool</h2>
-        <div class="max-w-3xl mx-auto text-lg text-center">
-            <p class="mb-4">
-                Getting less fuel? Meter tampering? Adulterated petrol? Don't suffer in silence!
-                This <strong>free tool</strong> helps you generate a professional complaint email instantly — with auto-filled company emails, your details, and photo proof.
-            </p>
-            <p>
-                Made by a 1st-year BTech student to fight fuel fraud across India. 100% free. No login. Works offline.
-            </p>
-        </div>
-    </section>
+    <!-- Hero Menu -->
+    <section class="bg-light">
+        <div class="container">
+            <h2>Today's Fresh Menu</h2>
+            <p style="font-size:1.2rem; margin-bottom:30px;">Made with love, served fresh every day!</p>
 
-    <!-- Company Cards -->
-    <section class="bg-white py-10">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-semibold mb-6 text-center">Official Complaint Emails</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-                <div class="bg-gray-200 p-4 rounded-lg text-center">Indian Oil (IOCL)<br><b>customercare@indianoil.in</b><br>1800-2333-555</div>
-                <div class="bg-gray-200 p-4 rounded-lg text-center">Bharat Petroleum (BPCL)<br><b>info@bharatpetroleum.com</b><br>1800-22-4344</div>
-                <div class="bg-gray-200 p-4 rounded-lg text-center">Hindustan Petroleum (HPCL)<br><b>corphqo@hpcl.in</b><br>1800-2333-555</div>
-                <div class="bg-gray-200 p-4 rounded-lg text-center">Jio-bp<br><b>customercare.petroleum@jiobp.com</b><br>1800-891-9023</div>
-                <div class="bg-gray-200 p-4 rounded-lg text-center">Nayara Energy<br><b>franchisee.support@nayaraenergy.com</b><br>1800-1200-330</div>
-                <div class="bg-gray-200 p-4 rounded-lg text-center">Shell India<br><b>generalpublicenquiries-in@shell.com</b><br>044-3099-1103</div>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1554118811-5d2d3e0e6a14?w=400" alt="Masala Chai">
+                    <div class="season-badge">Winter Special</div>
+                    <div class="card-content">
+                        <h3>Adrak Elaichi Chai</h3>
+                        <p>Fresh ginger & cardamom tea</p>
+                        <p class="price">₹15</p>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1622485764297-0b5869bf3b3f?w=400" alt="Mosambi Juice">
+                    <div class="season-badge">All Season</div>
+                    <div class="card-content">
+                        <h3>Fresh Mosambi Juice</h3>
+                        <p>100% pure sweet lime</p>
+                        <p class="price">₹40</p>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?w=400" alt="Poha">
+                    <div class="season-badge">Monsoon Special</div>
+                    <div class="card-content">
+                        <h3>Indori Poha</h3>
+                        <p>With jeeravan & sev</p>
+                        <p class="price">₹35</p>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1607478900766-7b26c9a6e155?w=400" alt="Gajar Halwa">
+                    <div class="season-badge">Winter Only</div>
+                    <div class="card-content">
+                        <h3>Gajar Ka Halwa</h3>
+                        <p>Hot & fresh carrot dessert</p>
+                        <p class="price">₹50</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Complaint Generator -->
-    <section class="container mx-auto py-10 px-4">
-        <h2 class="text-3xl font-semibold mb-6 text-center">Generate Complaint Email</h2>
-        <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md">
-            <form id="complaintForm">
-                <input type="text" placeholder="Your Full Name" id="name" required />
-                <input type="email" placeholder="Your Email" id="email" required />
-                <input type="tel" placeholder="Your Phone (optional)" id="phone" />
-                <select id="company" required>
-                    <option value="">Select Petrol Company</option>
-                    <option value="Indian Oil (IOCL)|customercare@indianoil.in">Indian Oil (IOCL)</option>
-                    <option value="Bharat Petroleum (BPCL)|info@bharatpetroleum.com">Bharat Petroleum (BPCL)</option>
-                    <option value="Hindustan Petroleum (HPCL)|corphqo@hpcl.in">Hindustan Petroleum (HPCL)</option>
-                    <option value="Jio-bp|customercare.petroleum@jiobp.com">Jio-bp</option>
-                    <option value="Nayara Energy|franchisee.support@nayaraenergy.com">Nayara Energy</option>
-                    <option value="Shell India|generalpublicenquiries-in@shell.com">Shell India</option>
-                </select>
-                <input type="text" placeholder="Pump Location (City, Area)" id="location" required />
-                <input type="date" id="date" required />
-                <textarea placeholder="Describe what happened (less fuel, meter tampering, rude staff, etc.)" id="description" rows="4" required></textarea>
-
-                <label class="file-label">
-                    <input type="file" id="image" accept="image/*" />
-                    Attach Photo / Video Proof (Bill, Meter, Pump)
-                </label>
-                <div id="preview"></div>
-
-                <button type="button" onclick="generateComplaint()">Generate Email Now</button>
-            </form>
-
-            <div id="output" class="mt-6 p-6 bg-gray-100 rounded-lg" style="display:none;">
-                <h3 class="text-xl font-bold">Ready to Send!</h3>
-                <p><b>To:</b> <span id="toEmail"></span></p>
-                <p><b>Subject:</b> Urgent: Fuel Scam at Your Petrol Pump</p>
-                <textarea id="emailBody" rows="15" style="width:100%; padding:1rem; margin:1rem 0;"></textarea><br/>
-                <button onclick="copyEmail()">Copy Email</button>
-                <button onclick="openMail()">Open in Gmail</button>
-                <p class="text-sm text-gray-600 mt-2">Tip: Attach your photo manually after pasting in Gmail/Outlook.</p>
+    <!-- Why Seasonwala -->
+    <section>
+        <div class="container">
+            <h2>Why Seasonwala?</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>Fresh & Seasonal</h3>
+                    <p>We use only seasonal ingredients for maximum taste & nutrition</p>
+                </div>
+                <div class="feature">
+                    <h3>Hygiene First</h3>
+                    <p>Clean kitchen, RO water, daily fresh preparation</p>
+                </div>
+                <div class="feature">
+                    <h3>Best Location</h3>
+                    <p>Right at Katni Bus Stand – perfect for travelers & locals</p>
+                </div>
+                <div class="feature">
+                    <h3>Affordable Prices</h3>
+                    <p>Premium taste at pocket-friendly rates</p>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Location -->
+    <section class="bg-light">
+        <div class="container">
+            <h2>Find Us Here</h2>
+            <p>Near Katni Bus Stand • Opposite Platform No. 1</p>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3661.456789!2d80.3922!3d23.833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDQ5JzQ2LjAiTiA4MMKwMjMnMzIuMCJF!5e0!3m2!1sen!2sin!4v1234567890" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <p style="margin-top:20px;">
+                <strong>Timings:</strong> 6:00 AM - 10:00 PM • 7 days open
+            </p>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-blue-600 text-white py-6 text-center">
-        <p>Made with ❤️ by a 1st Year BTech Student | Fighting Fuel Fraud Since 2025</p>
-        <p>Contact: fuelscamcomplaint@gmail.com | <a href="https://github.com/yourusername" class="text-white underline">GitHub</a></p>
-        <p>© 2025 Fuel Scam Complaint. All rights reserved.</p>
+    <footer>
+        <div class="container">
+            <h2 style="color:white; margin-bottom:20px;">Seasonwala Cafe</h2>
+            <p>Call / WhatsApp: <a href="tel:+919876543210" style="color:#ff6b35;">+91 98765 43210</a></p>
+            <p>Email: hello@seasonwala.com</p>
+            <div class="social-links" style="margin:20px 0;">
+                <a href="https://instagram.com/seasonwala" target="_blank">Instagram</a> • 
+                <a href="https://facebook.com/seasonwala" target="_blank">Facebook</a> • 
+                <a href="https://wa.me/919876543210" target="_blank">WhatsApp</a>
+            </div>
+            <p>Made with love by a Deloitte Developer for Katni ❤️</p>
+            <p>&copy; 2025 Seasonwala Cafe. All rights reserved.</p>
+        </div>
     </footer>
 
-    <script>
-        function generateComplaint() {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value || 'Not provided';
-            const [company, toEmail] = document.getElementById('company').value.split('|');
-            const location = document.getElementById('location').value;
-            const date = document.getElementById('date').value;
-            const desc = document.getElementById('description').value;
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/919876543210?text=Namaste!%20I'd%20like%20to%20know%20today's%20menu%20at%20Seasonwala%20Cafe" class="whatsapp-float" target="_blank">
+        WhatsApp
+    </a>
 
-            if (!name || !email || !company || !location || !date || !desc) {
-                alert("Please fill all required fields!");
-                return;
-            }
-
-            const body = `Subject: Urgent Complaint - Fuel Scam at ${company} Petrol Pump
-
-Dear ${company} Team,
-
-I am reporting a serious fuel fraud incident at your petrol pump.
-
-Complainant Details:
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-
-Incident Details:
-Location: ${location}
-Date: ${date}
-Description:
-${desc}
-
-I have attached photo/video proof (meter tampering / less fuel / bill mismatch).
-
-Requests:
-1. Immediate investigation
-2. Strict action against staff/pump owner
-3. Refund for short fuel
-4. Public assurance of no repeat
-
-Please acknowledge within 24 hours.
-
-Regards,
-${name}
-${email}
-${phone}`;
-
-            document.getElementById('toEmail').textContent = toEmail;
-            document.getElementById('emailBody').value = body;
-            document.getElementById('output').style.display = 'block';
-            document.getElementById('output').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function copyEmail() {
-            const textarea = document.getElementById('emailBody');
-            textarea.select();
-            document.execCommand('copy');
-            alert('Copied! Paste in Gmail/Outlook.');
-        }
-
-        function openMail() {
-            const to = document.getElementById('toEmail').textContent;
-            const body = encodeURIComponent(document.getElementById('emailBody').value);
-            window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${to}&body=${body}`);
-        }
-
-        document.getElementById('image').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = e => {
-                    document.getElementById('preview').innerHTML = `<img src="${e.target.result}" />`;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-    </script>
 </body>
 </html>
