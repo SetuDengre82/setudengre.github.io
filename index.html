@@ -1,595 +1,225 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-    </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Setu Dengre - Freelance Java & Cloud Developer</title>
-    <script src="./Setu Dengre - Freelance Java & Cloud Developer_files/saved_resource"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Fuel Scam Complaint - Report Petrol Fraud Instantly</title>
     <style>
-        *, ::before, ::after {
-            --tw-border-spacing-x: 0;
-            --tw-border-spacing-y: 0;
-            --tw-translate-x: 0;
-            --tw-translate-y: 0;
-            --tw-rotate: 0;
-            --tw-skew-x: 0;
-            --tw-skew-y: 0;
-            --tw-scale-x: 1;
-            --tw-scale-y: 1;
-            --tw-pan-x: ;
-            --tw-pan-y: ;
-            --tw-pinch-zoom: ;
-            --tw-scroll-snap-strictness: proximity;
-            --tw-gradient-from-position: ;
-            --tw-gradient-via-position: ;
-            --tw-gradient-to-position: ;
-            --tw-ordinal: ;
-            --tw-slashed-zero: ;
-            --tw-numeric-figure: ;
-            --tw-numeric-spacing: ;
-            --tw-numeric-fraction: ;
-            --tw-ring-inset: ;
-            --tw-ring-offset-width: 0px;
-            --tw-ring-offset-color: #fff;
-            --tw-ring-color: rgb(59 130 246 / 0.5);
-            --tw-ring-offset-shadow: 0 0 #0000;
-            --tw-ring-shadow: 0 0 #0000;
-            --tw-shadow: 0 0 #0000;
-            --tw-shadow-colored: 0 0 #0000;
-            --tw-blur: ;
-            --tw-brightness: ;
-            --tw-contrast: ;
-            --tw-grayscale: ;
-            --tw-hue-rotate: ;
-            --tw-invert: ;
-            --tw-saturate: ;
-            --tw-sepia: ;
-            --tw-drop-shadow: ;
-            --tw-backdrop-blur: ;
-            --tw-backdrop-brightness: ;
-            --tw-backdrop-contrast: ;
-            --tw-backdrop-grayscale: ;
-            --tw-backdrop-hue-rotate: ;
-            --tw-backdrop-invert: ;
-            --tw-backdrop-opacity: ;
-            --tw-backdrop-saturate: ;
-            --tw-backdrop-sepia: ;
-            --tw-contain-size: ;
-            --tw-contain-layout: ;
-            --tw-contain-paint: ;
-            --tw-contain-style: ;
-        }
-        ::backdrop {
-            --tw-border-spacing-x: 0;
-            --tw-border-spacing-y: 0;
-            --tw-translate-x: 0;
-            --tw-translate-y: 0;
-            --tw-rotate: 0;
-            --tw-skew-x: 0;
-            --tw-skew-y: 0;
-            --tw-scale-x: 1;
-            --tw-scale-y: 1;
-            --tw-pan-x: ;
-            --tw-pan-y: ;
-            --tw-pinch-zoom: ;
-            --tw-scroll-snap-strictness: proximity;
-            --tw-gradient-from-position: ;
-            --tw-gradient-via-position: ;
-            --tw-gradient-to-position: ;
-            --tw-ordinal: ;
-            --tw-slashed-zero: ;
-            --tw-numeric-figure: ;
-            --tw-numeric-spacing: ;
-            --tw-numeric-fraction: ;
-            --tw-ring-inset: ;
-            --tw-ring-offset-width: 0px;
-            --tw-ring-offset-color: #fff;
-            --tw-ring-color: rgb(59 130 246 / 0.5);
-            --tw-ring-offset-shadow: 0 0 #0000;
-            --tw-ring-shadow: 0 0 #0000;
-            --tw-shadow: 0 0 #0000;
-            --tw-shadow-colored: 0 0 #0000;
-            --tw-blur: ;
-            --tw-brightness: ;
-            --tw-contrast: ;
-            --tw-grayscale: ;
-            --tw-hue-rotate: ;
-            --tw-invert: ;
-            --tw-saturate: ;
-            --tw-sepia: ;
-            --tw-drop-shadow: ;
-            --tw-backdrop-blur: ;
-            --tw-backdrop-brightness: ;
-            --tw-backdrop-contrast: ;
-            --tw-backdrop-grayscale: ;
-            --tw-backdrop-hue-rotate: ;
-            --tw-backdrop-invert: ;
-            --tw-backdrop-opacity: ;
-            --tw-backdrop-saturate: ;
-            --tw-backdrop-sepia: ;
-            --tw-contain-size: ;
-            --tw-contain-layout: ;
-            --tw-contain-paint: ;
-            --tw-contain-style: ;
-        }
-        /* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */
-        *, ::after, ::before {
-            box-sizing: border-box;
-            border-width: 0;
-            border-style: solid;
-            border-color: #e5e7eb;
-        }
-        ::after, ::before {
-            --tw-content: '';
-        }
-        :host, html {
-            line-height: 1.5;
-            -webkit-text-size-adjust: 100%;
-            -moz-tab-size: 4;
-            tab-size: 4;
-            font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-            font-feature-settings: normal;
-            font-variation-settings: normal;
-            -webkit-tap-highlight-color: transparent;
-        }
-        body {
-            margin: 0;
-            line-height: inherit;
-        }
-        hr {
-            height: 0;
-            color: inherit;
-            border-top-width: 1px;
-        }
-        abbr:where([title]) {
-            -webkit-text-decoration: underline dotted;
-            text-decoration: underline dotted;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-size: inherit;
-            font-weight: inherit;
-        }
-        a {
-            color: inherit;
-            text-decoration: inherit;
-        }
-        b, strong {
-            font-weight: bolder;
-        }
-        code, kbd, pre, samp {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            font-feature-settings: normal;
-            font-variation-settings: normal;
-            font-size: 1em;
-        }
-        small {
-            font-size: 80%;
-        }
-        sub, sup {
-            font-size: 75%;
-            line-height: 0;
-            position: relative;
-            vertical-align: baseline;
-        }
-        sub {
-            bottom: -.25em;
-        }
-        sup {
-            top: -.5em;
-        }
-        table {
-            text-indent: 0;
-            border-color: inherit;
-            border-collapse: collapse;
-        }
-        button, input, optgroup, select, textarea {
-            font-family: inherit;
-            font-feature-settings: inherit;
-            font-variation-settings: inherit;
-            font-size: 100%;
-            font-weight: inherit;
-            line-height: inherit;
-            letter-spacing: inherit;
-            color: inherit;
-            margin: 0;
-            padding: 0;
-        }
-        button, select {
-            text-transform: none;
-        }
-        button, input:where([type=button]), input:where([type=reset]), input:where([type=submit]) {
-            -webkit-appearance: button;
-            background-color: transparent;
-            background-image: none;
-        }
-        :-moz-focusring {
-            outline: auto;
-        }
-        :-moz-ui-invalid {
-            box-shadow: none;
-        }
-        progress {
-            vertical-align: baseline;
-        }
-        ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
-            height: auto;
-        }
-        [type=search] {
-            -webkit-appearance: textfield;
-            outline-offset: -2px;
-        }
-        ::-webkit-search-decoration {
-            -webkit-appearance: none;
-        }
-        ::-webkit-file-upload-button {
-            -webkit-appearance: button;
-            font: inherit;
-        }
-        summary {
-            display: list-item;
-        }
-        blockquote, dd, dl, figure, h1, h2, h3, h4, h5, h6, hr, p, pre {
-            margin: 0;
-        }
-        fieldset {
-            margin: 0;
-            padding: 0;
-        }
-        legend {
-            padding: 0;
-        }
-        menu, ol, ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        dialog {
-            padding: 0;
-        }
-        textarea {
-            resize: vertical;
-        }
-        input::placeholder, textarea::placeholder {
-            opacity: 1;
-            color: #9ca3af;
-        }
-        [role=button], button {
-            cursor: pointer;
-        }
-        :disabled {
-            cursor: default;
-        }
-        audio, canvas, embed, iframe, img, object, svg, video {
-            display: block;
-            vertical-align: middle;
-        }
-        img, video {
-            max-width: 100%;
-            height: auto;
-        }
-        [hidden]:where(:not([hidden=until-found])) {
-            display: none;
-        }
-        .container {
-            width: 100%;
-        }
-        @media (min-width: 640px) {
-            .container {
-                max-width: 640px;
-            }
-        }
-        @media (min-width: 768px) {
-            .container {
-                max-width: 768px;
-            }
-        }
-        @media (min-width: 1024px) {
-            .container {
-                max-width: 1024px;
-            }
-        }
-        @media (min-width: 1280px) {
-            .container {
-                max-width: 1280px;
-            }
-        }
-        @media (min-width: 1536px) {
-            .container {
-                max-width: 1536px;
-            }
-        }
-        .mx-auto {
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .mb-2 {
-            margin-bottom: 0.5rem;
-        }
-        .mb-4 {
-            margin-bottom: 1rem;
-        }
-        .mb-6 {
-            margin-bottom: 1.5rem;
-        }
-        .mt-2 {
-            margin-top: 0.5rem;
-        }
-        .grid {
-            display: grid;
-        }
-        .max-w-2xl {
-            max-width: 42rem;
-        }
-        .max-w-3xl {
-            max-width: 48rem;
-        }
-        .max-w-4xl {
-            max-width: 56rem;
-        }
-        .list-inside {
-            list-style-position: inside;
-        }
-        .list-disc {
-            list-style-type: disc;
-        }
-        .grid-cols-1 {
-            grid-template-columns: repeat(1, minmax(0, 1fr));
-        }
-        .gap-4 {
-            gap: 1rem;
-        }
-        .gap-6 {
-            gap: 1.5rem;
-        }
-        .rounded-lg {
-            border-radius: 0.5rem;
-        }
-        .bg-blue-600 {
-            --tw-bg-opacity: 1;
-            background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1));
-        }
-        .bg-gray-100 {
-            --tw-bg-opacity: 1;
-            background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
-        }
-        .bg-gray-200 {
-            --tw-bg-opacity: 1;
-            background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
-        }
-        .bg-white {
-            --tw-bg-opacity: 1;
-            background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-        }
-        .p-4 {
-            padding: 1rem;
-        }
-        .p-6 {
-            padding: 1.5rem;
-        }
-        .px-4 {
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-        .py-10 {
-            padding-top: 2.5rem;
-            padding-bottom: 2.5rem;
-        }
-        .py-4 {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-        .py-6 {
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-        .text-center {
-            text-align: center;
-        }
-        .font-sans {
-            font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        }
-        .text-3xl {
-            font-size: 1.875rem;
-            line-height: 2.25rem;
-        }
-        .text-4xl {
-            font-size: 2.25rem;
-            line-height: 2.5rem;
-        }
-        .text-lg {
-            font-size: 1.125rem;
-            line-height: 1.75rem;
-        }
-        .text-xl {
-            font-size: 1.25rem;
-            line-height: 1.75rem;
-        }
-        .font-bold {
-            font-weight: 700;
-        }
-        .font-semibold {
-            font-weight: 600;
-        }
-        .text-blue-600 {
-            --tw-text-opacity: 1;
-            color: rgb(37 99 235 / var(--tw-text-opacity, 1));
-        }
-        .text-gray-600 {
-            --tw-text-opacity: 1;
-            color: rgb(75 85 99 / var(--tw-text-opacity, 1));
-        }
-        .text-gray-800 {
-            --tw-text-opacity: 1;
-            color: rgb(31 41 55 / var(--tw-text-opacity, 1));
-        }
-        .text-white {
-            --tw-text-opacity: 1;
-            color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-        }
-        .shadow-md {
-            --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
-            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-        }
-        @media (min-width: 640px) {
-            .sm\:grid-cols-2 {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-        @media (min-width: 768px) {
-            .md\:grid-cols-2 {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-            .md\:grid-cols-3 {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-        }
-
-        /* Custom styles for image */
-        .profile-img {
-            max-width: 100px; /* Smaller size */
-            height: auto;
-            border-radius: 50%; /* Circular shape */
-            border: 3px solid #ffffff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin: 0 auto 1rem auto;
-        }
+        *, ::before, ::after { box-sizing: border-box; }
+        html { line-height: 1.5; font-family: ui-sans-serif, system-ui, sans-serif; }
+        body { margin: 0; background: #f3f4f6; color: #1f2937; }
+        .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
+        .bg-blue-600 { background-color: #2563eb; }
+        .bg-white { background-color: #fff; }
+        .bg-gray-100 { background-color: #f3f4f6; }
+        .bg-gray-200 { background-color: #e5e7eb; }
+        .text-white { color: #fff; }
+        .text-blue-600 { color: #2563eb; }
+        .text-gray-600 { color: #4b5563; }
+        .text-gray-800 { color: #1f2937; }
+        .text-center { text-align: center; }
+        .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+        .py-10 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .p-4 { padding: 1rem; }
+        .p-6 { padding: 1.5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+        .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+        .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+        .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .shadow-md { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1); }
+        .grid { display: grid; }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .gap-4 { gap: 1rem; }
+        .gap-6 { gap: 1.5rem; }
+        .max-w-4xl { max-width: 56rem; }
+        .max-w-3xl { max-width: 48rem; }
+        .max-w-2xl { max-width: 42rem; }
+        input, select, textarea {
+            width: 100%; padding: 0.75rem; margin: 0.5rem 0; border: 1px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem;
+        }
+        button {
+            background: #2563eb; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 0.5rem; cursor: pointer; font-size: 1.1rem;
+        }
+        button:hover { background: #1d4ed8; }
+        .file-label {
+            display: block; background: #dbeafe; padding: 1rem; border-radius: 0.5rem; text-align: center; cursor: pointer; margin: 1rem 0;
+        }
+        #preview img { max-width: 100%; margin-top: 10px; border-radius: 8px; }
+        @media (min-width: 640px) { .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (min-width: 768px) { .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
     </style>
 </head>
 <body class="bg-gray-100 font-sans text-gray-800">
+
     <!-- Header -->
     <header class="bg-blue-600 text-white py-6">
         <div class="container mx-auto text-center">
-            <h1 class="text-4xl font-bold">Setu Dengre</h1>
-            <p class="text-xl mt-2">Freelance Java & Cloud Developer</p>
+            <h1 class="text-4xl font-bold">Fuel Scam Complaint</h1>
+            <p class="text-xl mt-2">Report Petrol Pump Fraud & Get Justice in 30 Seconds</p>
         </div>
     </header>
 
-    <!-- About Section -->
+    <!-- About -->
     <section class="container mx-auto py-10 px-4">
-        <h2 class="text-3xl font-semibold mb-6 text-center">About Me</h2>
+        <h2 class="text-3xl font-semibold mb-6 text-center">About This Tool</h2>
         <div class="max-w-3xl mx-auto text-lg text-center">
-            <!-- <img src="Setu_Formal_Image.png" alt="Setu Dengre Profile" class="profile-img"> -->
             <p class="mb-4">
-                I’m a dedicated Java Developer and Cloud Specialist with over six years of experience building scalable, high-performance applications using Java, Spring Boot, and microservices architectures. My expertise spans backend development, cloud solutions (GCP, AWS), and system design, making me a versatile freelancer for projects requiring robust, cloud-native applications.
+                Getting less fuel? Meter tampering? Adulterated petrol? Don't suffer in silence!
+                This <strong>free tool</strong> helps you generate a professional complaint email instantly — with auto-filled company emails, your details, and photo proof.
             </p>
             <p>
-                Certified as a <strong>Google Associate Cloud Engineer</strong> and <strong>Oracle Certified Associate (1Z0-808)</strong>, I’m currently pursuing <strong>AWS Certified Solutions Architect – Associate</strong> and <strong>Spring Professional</strong> certifications to deepen my expertise. I thrive on solving complex problems, from optimizing microservices to automating workflows with tools like Dropbox and Google Sheets. Let’s build innovative solutions together!
+                Made by a 1st-year BTech student to fight fuel fraud across India. 100% free. No login. Works offline.
             </p>
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Company Cards -->
     <section class="bg-white py-10">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-semibold mb-6 text-center">Skills</h2>
+            <h2 class="text-3xl font-semibold mb-6 text-center">Official Complaint Emails</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-                <div class="bg-gray-200 p-4 rounded-lg text-center">Java</div>
-                <div class="bg-gray-200 p-4 rounded-lg text-center">Spring Boot</div>
-                <div class="bg-gray-200 p-4 rounded-lg text-center">Microservices</div>
-                <div class="bg-gray-200 p-4 rounded-lg text-center">Google Cloud Platform</div>
-                <div class="bg-gray-200 p-4 rounded-lg text-center">Docker</div>
-                <div class="bg-gray-200 p-4 rounded-lg text-center">Apache Kafka</div>
-                <div class="bg-gray-200 p-4 rounded-lg text-center">REST APIs</div>
-                <div class="bg-gray-200 p-4 rounded-lg text-center">MySQL & Oracle Database</div>
-                <div class="bg-gray-200 p-4 rounded-lg text-center">JUnit & Mockito</div>
-                <div class="bg-gray-200 p-4 rounded-lg text-center">Struts & JSP</div>
-                <div class="bg-gray-200 p-4 rounded-lg text-center">System Design</div>
+                <div class="bg-gray-200 p-4 rounded-lg text-center">Indian Oil (IOCL)<br><b>customercare@indianoil.in</b><br>1800-2333-555</div>
+                <div class="bg-gray-200 p-4 rounded-lg text-center">Bharat Petroleum (BPCL)<br><b>info@bharatpetroleum.com</b><br>1800-22-4344</div>
+                <div class="bg-gray-200 p-4 rounded-lg text-center">Hindustan Petroleum (HPCL)<br><b>corphqo@hpcl.in</b><br>1800-2333-555</div>
+                <div class="bg-gray-200 p-4 rounded-lg text-center">Jio-bp<br><b>customercare.petroleum@jiobp.com</b><br>1800-891-9023</div>
+                <div class="bg-gray-200 p-4 rounded-lg text-center">Nayara Energy<br><b>franchisee.support@nayaraenergy.com</b><br>1800-1200-330</div>
+                <div class="bg-gray-200 p-4 rounded-lg text-center">Shell India<br><b>generalpublicenquiries-in@shell.com</b><br>044-3099-1103</div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Complaint Generator -->
     <section class="container mx-auto py-10 px-4">
-        <h2 class="text-3xl font-semibold mb-6 text-center">Projects</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <!-- Project 1: WSNOC -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-xl font-bold mb-2">WSNOC Network Management System</h3>
-                <p class="text-gray-600 mb-4">Led backend development for Nokia’s Network Connection Management System using Java 11, Spring Boot, Apache Kafka, Oracle Database, and Docker. Implemented the SFM6E card, enhancing network performance.</p>
-            </div>
-            <!-- Project 2: myHMSWeb -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-xl font-bold mb-2">myHMSWeb Hotel Management System</h3>
-                <p class="text-gray-600 mb-4">Developed features for a Hotel Property Management System at TEKSystems using Struts, Java 8, MySQL, JSP, and third-party APIs, improving user experience and system functionality.</p>
-            </div>
-            <!-- Project 3: VendorSync File Automation -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-xl font-bold mb-2">VendorSync File Automation</h3>
-                <p class="text-gray-600 mb-4">Built a Python script to automate Excel and image file uploads to Dropbox for vendor data processing, integrating with Google Sheets for seamless workflow automation.</p>
-                <p class="text-blue-600"><a href="https://github.com/SetuDengre82/Nest" target="_blank">View Project</a></p>
+        <h2 class="text-3xl font-semibold mb-6 text-center">Generate Complaint Email</h2>
+        <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md">
+            <form id="complaintForm">
+                <input type="text" placeholder="Your Full Name" id="name" required />
+                <input type="email" placeholder="Your Email" id="email" required />
+                <input type="tel" placeholder="Your Phone (optional)" id="phone" />
+                <select id="company" required>
+                    <option value="">Select Petrol Company</option>
+                    <option value="Indian Oil (IOCL)|customercare@indianoil.in">Indian Oil (IOCL)</option>
+                    <option value="Bharat Petroleum (BPCL)|info@bharatpetroleum.com">Bharat Petroleum (BPCL)</option>
+                    <option value="Hindustan Petroleum (HPCL)|corphqo@hpcl.in">Hindustan Petroleum (HPCL)</option>
+                    <option value="Jio-bp|customercare.petroleum@jiobp.com">Jio-bp</option>
+                    <option value="Nayara Energy|franchisee.support@nayaraenergy.com">Nayara Energy</option>
+                    <option value="Shell India|generalpublicenquiries-in@shell.com">Shell India</option>
+                </select>
+                <input type="text" placeholder="Pump Location (City, Area)" id="location" required />
+                <input type="date" id="date" required />
+                <textarea placeholder="Describe what happened (less fuel, meter tampering, rude staff, etc.)" id="description" rows="4" required></textarea>
+
+                <label class="file-label">
+                    <input type="file" id="image" accept="image/*" />
+                    Attach Photo / Video Proof (Bill, Meter, Pump)
+                </label>
+                <div id="preview"></div>
+
+                <button type="button" onclick="generateComplaint()">Generate Email Now</button>
+            </form>
+
+            <div id="output" class="mt-6 p-6 bg-gray-100 rounded-lg" style="display:none;">
+                <h3 class="text-xl font-bold">Ready to Send!</h3>
+                <p><b>To:</b> <span id="toEmail"></span></p>
+                <p><b>Subject:</b> Urgent: Fuel Scam at Your Petrol Pump</p>
+                <textarea id="emailBody" rows="15" style="width:100%; padding:1rem; margin:1rem 0;"></textarea><br/>
+                <button onclick="copyEmail()">Copy Email</button>
+                <button onclick="openMail()">Open in Gmail</button>
+                <p class="text-sm text-gray-600 mt-2">Tip: Attach your photo manually after pasting in Gmail/Outlook.</p>
             </div>
         </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section class="bg-gray-200 py-10">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-semibold mb-6 text-center">Certifications</h2>
-            <ul class="max-w-2xl mx-auto text-lg list-disc list-inside">
-                <li>Google Associate Cloud Engineer</li>
-                <li>Oracle Certified Associate (1Z0-808)</li>
-                <li>HTML Level-1 (Cambridge Certification)</li>
-                <li>Pursuing: AWS Certified Solutions Architect – Associate (2025)</li>
-                <li>Pursuing: Spring Professional Certification (2025)</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="container mx-auto py-10 px-4 text-center">
-        <h2 class="text-3xl font-semibold mb-6">Get in Touch</h2>
-        <p class="text-lg mb-4">Ready to build scalable, cloud-native solutions? Contact me for freelance opportunities!</p>
-        <p class="text-blue-600">
-            <a href="mailto:setudengre82@gmail.com">setudengre82@gmail.com</a> | 
-            <a href="tel:+919755342599">+91 9755342599</a> | 
-            <a href="https://linkedin.com/in/setu-dengre-413084116" target="_blank">LinkedIn</a> | 
-            <a href="https://github.com/setudengre82" target="_blank">GitHub</a>
-        </p>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-blue-600 text-white py-4 text-center">
-        <p>© 2025 Setu Dengre. All rights reserved.</p>
+    <footer class="bg-blue-600 text-white py-6 text-center">
+        <p>Made with ❤️ by a 1st Year BTech Student | Fighting Fuel Fraud Since 2025</p>
+        <p>Contact: fuelscamcomplaint@gmail.com | <a href="https://github.com/yourusername" class="text-white underline">GitHub</a></p>
+        <p>© 2025 Fuel Scam Complaint. All rights reserved.</p>
     </footer>
+
+    <script>
+        function generateComplaint() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value || 'Not provided';
+            const [company, toEmail] = document.getElementById('company').value.split('|');
+            const location = document.getElementById('location').value;
+            const date = document.getElementById('date').value;
+            const desc = document.getElementById('description').value;
+
+            if (!name || !email || !company || !location || !date || !desc) {
+                alert("Please fill all required fields!");
+                return;
+            }
+
+            const body = `Subject: Urgent Complaint - Fuel Scam at ${company} Petrol Pump
+
+Dear ${company} Team,
+
+I am reporting a serious fuel fraud incident at your petrol pump.
+
+Complainant Details:
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+
+Incident Details:
+Location: ${location}
+Date: ${date}
+Description:
+${desc}
+
+I have attached photo/video proof (meter tampering / less fuel / bill mismatch).
+
+Requests:
+1. Immediate investigation
+2. Strict action against staff/pump owner
+3. Refund for short fuel
+4. Public assurance of no repeat
+
+Please acknowledge within 24 hours.
+
+Regards,
+${name}
+${email}
+${phone}`;
+
+            document.getElementById('toEmail').textContent = toEmail;
+            document.getElementById('emailBody').value = body;
+            document.getElementById('output').style.display = 'block';
+            document.getElementById('output').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copyEmail() {
+            const textarea = document.getElementById('emailBody');
+            textarea.select();
+            document.execCommand('copy');
+            alert('Copied! Paste in Gmail/Outlook.');
+        }
+
+        function openMail() {
+            const to = document.getElementById('toEmail').textContent;
+            const body = encodeURIComponent(document.getElementById('emailBody').value);
+            window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${to}&body=${body}`);
+        }
+
+        document.getElementById('image').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    document.getElementById('preview').innerHTML = `<img src="${e.target.result}" />`;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,595 @@
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setu Dengre - Freelance Java & Cloud Developer</title>
+    <script src="./Setu Dengre - Freelance Java & Cloud Developer_files/saved_resource"></script>
+    <style>
+        *, ::before, ::after {
+            --tw-border-spacing-x: 0;
+            --tw-border-spacing-y: 0;
+            --tw-translate-x: 0;
+            --tw-translate-y: 0;
+            --tw-rotate: 0;
+            --tw-skew-x: 0;
+            --tw-skew-y: 0;
+            --tw-scale-x: 1;
+            --tw-scale-y: 1;
+            --tw-pan-x: ;
+            --tw-pan-y: ;
+            --tw-pinch-zoom: ;
+            --tw-scroll-snap-strictness: proximity;
+            --tw-gradient-from-position: ;
+            --tw-gradient-via-position: ;
+            --tw-gradient-to-position: ;
+            --tw-ordinal: ;
+            --tw-slashed-zero: ;
+            --tw-numeric-figure: ;
+            --tw-numeric-spacing: ;
+            --tw-numeric-fraction: ;
+            --tw-ring-inset: ;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: rgb(59 130 246 / 0.5);
+            --tw-ring-offset-shadow: 0 0 #0000;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-colored: 0 0 #0000;
+            --tw-blur: ;
+            --tw-brightness: ;
+            --tw-contrast: ;
+            --tw-grayscale: ;
+            --tw-hue-rotate: ;
+            --tw-invert: ;
+            --tw-saturate: ;
+            --tw-sepia: ;
+            --tw-drop-shadow: ;
+            --tw-backdrop-blur: ;
+            --tw-backdrop-brightness: ;
+            --tw-backdrop-contrast: ;
+            --tw-backdrop-grayscale: ;
+            --tw-backdrop-hue-rotate: ;
+            --tw-backdrop-invert: ;
+            --tw-backdrop-opacity: ;
+            --tw-backdrop-saturate: ;
+            --tw-backdrop-sepia: ;
+            --tw-contain-size: ;
+            --tw-contain-layout: ;
+            --tw-contain-paint: ;
+            --tw-contain-style: ;
+        }
+        ::backdrop {
+            --tw-border-spacing-x: 0;
+            --tw-border-spacing-y: 0;
+            --tw-translate-x: 0;
+            --tw-translate-y: 0;
+            --tw-rotate: 0;
+            --tw-skew-x: 0;
+            --tw-skew-y: 0;
+            --tw-scale-x: 1;
+            --tw-scale-y: 1;
+            --tw-pan-x: ;
+            --tw-pan-y: ;
+            --tw-pinch-zoom: ;
+            --tw-scroll-snap-strictness: proximity;
+            --tw-gradient-from-position: ;
+            --tw-gradient-via-position: ;
+            --tw-gradient-to-position: ;
+            --tw-ordinal: ;
+            --tw-slashed-zero: ;
+            --tw-numeric-figure: ;
+            --tw-numeric-spacing: ;
+            --tw-numeric-fraction: ;
+            --tw-ring-inset: ;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: rgb(59 130 246 / 0.5);
+            --tw-ring-offset-shadow: 0 0 #0000;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-colored: 0 0 #0000;
+            --tw-blur: ;
+            --tw-brightness: ;
+            --tw-contrast: ;
+            --tw-grayscale: ;
+            --tw-hue-rotate: ;
+            --tw-invert: ;
+            --tw-saturate: ;
+            --tw-sepia: ;
+            --tw-drop-shadow: ;
+            --tw-backdrop-blur: ;
+            --tw-backdrop-brightness: ;
+            --tw-backdrop-contrast: ;
+            --tw-backdrop-grayscale: ;
+            --tw-backdrop-hue-rotate: ;
+            --tw-backdrop-invert: ;
+            --tw-backdrop-opacity: ;
+            --tw-backdrop-saturate: ;
+            --tw-backdrop-sepia: ;
+            --tw-contain-size: ;
+            --tw-contain-layout: ;
+            --tw-contain-paint: ;
+            --tw-contain-style: ;
+        }
+        /* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */
+        *, ::after, ::before {
+            box-sizing: border-box;
+            border-width: 0;
+            border-style: solid;
+            border-color: #e5e7eb;
+        }
+        ::after, ::before {
+            --tw-content: '';
+        }
+        :host, html {
+            line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+            -moz-tab-size: 4;
+            tab-size: 4;
+            font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-feature-settings: normal;
+            font-variation-settings: normal;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            margin: 0;
+            line-height: inherit;
+        }
+        hr {
+            height: 0;
+            color: inherit;
+            border-top-width: 1px;
+        }
+        abbr:where([title]) {
+            -webkit-text-decoration: underline dotted;
+            text-decoration: underline dotted;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-size: inherit;
+            font-weight: inherit;
+        }
+        a {
+            color: inherit;
+            text-decoration: inherit;
+        }
+        b, strong {
+            font-weight: bolder;
+        }
+        code, kbd, pre, samp {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-feature-settings: normal;
+            font-variation-settings: normal;
+            font-size: 1em;
+        }
+        small {
+            font-size: 80%;
+        }
+        sub, sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative;
+            vertical-align: baseline;
+        }
+        sub {
+            bottom: -.25em;
+        }
+        sup {
+            top: -.5em;
+        }
+        table {
+            text-indent: 0;
+            border-color: inherit;
+            border-collapse: collapse;
+        }
+        button, input, optgroup, select, textarea {
+            font-family: inherit;
+            font-feature-settings: inherit;
+            font-variation-settings: inherit;
+            font-size: 100%;
+            font-weight: inherit;
+            line-height: inherit;
+            letter-spacing: inherit;
+            color: inherit;
+            margin: 0;
+            padding: 0;
+        }
+        button, select {
+            text-transform: none;
+        }
+        button, input:where([type=button]), input:where([type=reset]), input:where([type=submit]) {
+            -webkit-appearance: button;
+            background-color: transparent;
+            background-image: none;
+        }
+        :-moz-focusring {
+            outline: auto;
+        }
+        :-moz-ui-invalid {
+            box-shadow: none;
+        }
+        progress {
+            vertical-align: baseline;
+        }
+        ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+            height: auto;
+        }
+        [type=search] {
+            -webkit-appearance: textfield;
+            outline-offset: -2px;
+        }
+        ::-webkit-search-decoration {
+            -webkit-appearance: none;
+        }
+        ::-webkit-file-upload-button {
+            -webkit-appearance: button;
+            font: inherit;
+        }
+        summary {
+            display: list-item;
+        }
+        blockquote, dd, dl, figure, h1, h2, h3, h4, h5, h6, hr, p, pre {
+            margin: 0;
+        }
+        fieldset {
+            margin: 0;
+            padding: 0;
+        }
+        legend {
+            padding: 0;
+        }
+        menu, ol, ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        dialog {
+            padding: 0;
+        }
+        textarea {
+            resize: vertical;
+        }
+        input::placeholder, textarea::placeholder {
+            opacity: 1;
+            color: #9ca3af;
+        }
+        [role=button], button {
+            cursor: pointer;
+        }
+        :disabled {
+            cursor: default;
+        }
+        audio, canvas, embed, iframe, img, object, svg, video {
+            display: block;
+            vertical-align: middle;
+        }
+        img, video {
+            max-width: 100%;
+            height: auto;
+        }
+        [hidden]:where(:not([hidden=until-found])) {
+            display: none;
+        }
+        .container {
+            width: 100%;
+        }
+        @media (min-width: 640px) {
+            .container {
+                max-width: 640px;
+            }
+        }
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px;
+            }
+        }
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1280px;
+            }
+        }
+        @media (min-width: 1536px) {
+            .container {
+                max-width: 1536px;
+            }
+        }
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .mb-2 {
+            margin-bottom: 0.5rem;
+        }
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+        .mb-6 {
+            margin-bottom: 1.5rem;
+        }
+        .mt-2 {
+            margin-top: 0.5rem;
+        }
+        .grid {
+            display: grid;
+        }
+        .max-w-2xl {
+            max-width: 42rem;
+        }
+        .max-w-3xl {
+            max-width: 48rem;
+        }
+        .max-w-4xl {
+            max-width: 56rem;
+        }
+        .list-inside {
+            list-style-position: inside;
+        }
+        .list-disc {
+            list-style-type: disc;
+        }
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+        .gap-4 {
+            gap: 1rem;
+        }
+        .gap-6 {
+            gap: 1.5rem;
+        }
+        .rounded-lg {
+            border-radius: 0.5rem;
+        }
+        .bg-blue-600 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1));
+        }
+        .bg-gray-100 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
+        }
+        .bg-gray-200 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
+        }
+        .bg-white {
+            --tw-bg-opacity: 1;
+            background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+        }
+        .p-4 {
+            padding: 1rem;
+        }
+        .p-6 {
+            padding: 1.5rem;
+        }
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        .py-10 {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+        }
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .py-6 {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .font-sans {
+            font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+        .text-3xl {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+        }
+        .text-4xl {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+        }
+        .text-lg {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+        }
+        .text-xl {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+        }
+        .font-bold {
+            font-weight: 700;
+        }
+        .font-semibold {
+            font-weight: 600;
+        }
+        .text-blue-600 {
+            --tw-text-opacity: 1;
+            color: rgb(37 99 235 / var(--tw-text-opacity, 1));
+        }
+        .text-gray-600 {
+            --tw-text-opacity: 1;
+            color: rgb(75 85 99 / var(--tw-text-opacity, 1));
+        }
+        .text-gray-800 {
+            --tw-text-opacity: 1;
+            color: rgb(31 41 55 / var(--tw-text-opacity, 1));
+        }
+        .text-white {
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+        }
+        .shadow-md {
+            --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+        }
+        @media (min-width: 640px) {
+            .sm\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        @media (min-width: 768px) {
+            .md\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .md\:grid-cols-3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        /* Custom styles for image */
+        .profile-img {
+            max-width: 100px; /* Smaller size */
+            height: auto;
+            border-radius: 50%; /* Circular shape */
+            border: 3px solid #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 0 auto 1rem auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white py-6">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-bold">Setu Dengre</h1>
+            <p class="text-xl mt-2">Freelance Java & Cloud Developer</p>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="container mx-auto py-10 px-4">
+        <h2 class="text-3xl font-semibold mb-6 text-center">About Me</h2>
+        <div class="max-w-3xl mx-auto text-lg text-center">
+            <!-- <img src="Setu_Formal_Image.png" alt="Setu Dengre Profile" class="profile-img"> -->
+            <p class="mb-4">
+                I’m a dedicated Java Developer and Cloud Specialist with over six years of experience building scalable, high-performance applications using Java, Spring Boot, and microservices architectures. My expertise spans backend development, cloud solutions (GCP, AWS), and system design, making me a versatile freelancer for projects requiring robust, cloud-native applications.
+            </p>
+            <p>
+                Certified as a <strong>Google Associate Cloud Engineer</strong> and <strong>Oracle Certified Associate (1Z0-808)</strong>, I’m currently pursuing <strong>AWS Certified Solutions Architect – Associate</strong> and <strong>Spring Professional</strong> certifications to deepen my expertise. I thrive on solving complex problems, from optimizing microservices to automating workflows with tools like Dropbox and Google Sheets. Let’s build innovative solutions together!
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="bg-white py-10">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-semibold mb-6 text-center">Skills</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                <div class="bg-gray-200 p-4 rounded-lg text-center">Java</div>
+                <div class="bg-gray-200 p-4 rounded-lg text-center">Spring Boot</div>
+                <div class="bg-gray-200 p-4 rounded-lg text-center">Microservices</div>
+                <div class="bg-gray-200 p-4 rounded-lg text-center">Google Cloud Platform</div>
+                <div class="bg-gray-200 p-4 rounded-lg text-center">Docker</div>
+                <div class="bg-gray-200 p-4 rounded-lg text-center">Apache Kafka</div>
+                <div class="bg-gray-200 p-4 rounded-lg text-center">REST APIs</div>
+                <div class="bg-gray-200 p-4 rounded-lg text-center">MySQL & Oracle Database</div>
+                <div class="bg-gray-200 p-4 rounded-lg text-center">JUnit & Mockito</div>
+                <div class="bg-gray-200 p-4 rounded-lg text-center">Struts & JSP</div>
+                <div class="bg-gray-200 p-4 rounded-lg text-center">System Design</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="container mx-auto py-10 px-4">
+        <h2 class="text-3xl font-semibold mb-6 text-center">Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <!-- Project 1: WSNOC -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold mb-2">WSNOC Network Management System</h3>
+                <p class="text-gray-600 mb-4">Led backend development for Nokia’s Network Connection Management System using Java 11, Spring Boot, Apache Kafka, Oracle Database, and Docker. Implemented the SFM6E card, enhancing network performance.</p>
+            </div>
+            <!-- Project 2: myHMSWeb -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold mb-2">myHMSWeb Hotel Management System</h3>
+                <p class="text-gray-600 mb-4">Developed features for a Hotel Property Management System at TEKSystems using Struts, Java 8, MySQL, JSP, and third-party APIs, improving user experience and system functionality.</p>
+            </div>
+            <!-- Project 3: VendorSync File Automation -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold mb-2">VendorSync File Automation</h3>
+                <p class="text-gray-600 mb-4">Built a Python script to automate Excel and image file uploads to Dropbox for vendor data processing, integrating with Google Sheets for seamless workflow automation.</p>
+                <p class="text-blue-600"><a href="https://github.com/SetuDengre82/Nest" target="_blank">View Project</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="bg-gray-200 py-10">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-semibold mb-6 text-center">Certifications</h2>
+            <ul class="max-w-2xl mx-auto text-lg list-disc list-inside">
+                <li>Google Associate Cloud Engineer</li>
+                <li>Oracle Certified Associate (1Z0-808)</li>
+                <li>HTML Level-1 (Cambridge Certification)</li>
+                <li>Pursuing: AWS Certified Solutions Architect – Associate (2025)</li>
+                <li>Pursuing: Spring Professional Certification (2025)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="container mx-auto py-10 px-4 text-center">
+        <h2 class="text-3xl font-semibold mb-6">Get in Touch</h2>
+        <p class="text-lg mb-4">Ready to build scalable, cloud-native solutions? Contact me for freelance opportunities!</p>
+        <p class="text-blue-600">
+            <a href="mailto:setudengre82@gmail.com">setudengre82@gmail.com</a> | 
+            <a href="tel:+919755342599">+91 9755342599</a> | 
+            <a href="https://linkedin.com/in/setu-dengre-413084116" target="_blank">LinkedIn</a> | 
+            <a href="https://github.com/setudengre82" target="_blank">GitHub</a>
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white py-4 text-center">
+        <p>© 2025 Setu Dengre. All rights reserved.</p>
+    </footer>
+</body>
+</html>
