@@ -66,6 +66,7 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: all 0.3s;
+            position: relative;
         }
         .menu-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(255,107,53,0.2); }
         .menu-card img {
@@ -107,6 +108,46 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
         }
         .feature h3 { color: #ff6b35; margin: 15px 0; }
+
+        /* Complaint Form */
+        .complaint-form {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(255,107,53,0.15);
+            max-width: 700px;
+            margin: 40px auto;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            border: 2px solid #ffd7ba;
+            border-radius: 12px;
+            font-size: 1rem;
+        }
+        button {
+            background: #ff6b35;
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: 0.3s;
+            margin: 5px;
+        }
+        button:hover { background: #e55a2b; transform: scale(1.05); }
+
+        .output-box {
+            background: #f0fdf4;
+            border: 2px solid #86efac;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+            display: none;
+        }
 
         /* Location */
         .map-container {
@@ -242,8 +283,45 @@
         </div>
     </section>
 
-    <!-- Location -->
+    <!-- COMPLAINT / FEEDBACK SECTION - FIXED GMAIL APP LINK -->
     <section class="bg-light">
+        <div class="container">
+            <h2>Feedback or Complaint?</h2>
+            <p style="margin-bottom:30px; font-size:1.2rem;">We take your experience seriously! Report any issue instantly.</p>
+
+            <div class="complaint-form">
+                <form id="complaintForm">
+                    <input type="text" placeholder="Your Name" id="name" required />
+                    <input type="email" placeholder="Your Email" id="email" required />
+                    <input type="tel" placeholder="Your Phone (optional)" id="phone" />
+                    <input type="text" placeholder="Order Number / Date (optional)" id="order" />
+                    <textarea placeholder="Describe your issue (stale food, rude staff, wrong order, etc.)" id="message" rows="5" required></textarea>
+                    <label style="display:block; background:#ffd7ba; padding:15px; border-radius:12px; cursor:pointer; text-align:center;">
+                        <input type="file" id="photo" accept="image/*" style="display:none;" />
+                        Attach Photo Proof (optional)
+                    </label>
+                    <div id="photoPreview" style="margin:15px 0;"></div>
+                    <button type="button" onclick="generateComplaint()">Generate Complaint</button>
+                </form>
+
+                <div id="complaintOutput" class="output-box">
+                    <h3>Ready! Your complaint is ready</h3>
+                    <p><strong>To:</strong> hello@seasonwala.com</p>
+                    <p><strong>Subject:</strong> Urgent Complaint - Seasonwala Cafe Katni</p>
+                    <textarea id="complaintBody" rows="12" style="width:100%; padding:15px; border-radius:10px; margin:10px 0;"></textarea><br/>
+                    <button onclick="copyComplaint()">Copy Email</button>
+                    <!-- FIXED: Now opens Gmail APP on phone & web on desktop -->
+                    <button onclick="openGmailApp()">Open in Gmail App</button>
+                    <p style="font-size:0.9rem; margin-top:10px; color:#16a34a;">
+                        Tip: Attach your photo manually after opening Gmail.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location -->
+    <section>
         <div class="container">
             <h2>Find Us Here</h2>
             <p>Near Katni Bus Stand • Opposite Platform No. 1</p>
@@ -267,15 +345,99 @@
                 <a href="https://facebook.com/seasonwala" target="_blank">Facebook</a> • 
                 <a href="https://wa.me/919755342599" target="_blank">WhatsApp</a>
             </div>
-            <p>Made with love by a Deloitte Developer for Katni ❤️</p>
-            <p>&copy; 2025 Seasonwala Cafe. All rights reserved.</p>
+            <p>Made with love by a Deloitte Developer for Katni</p>
+            <p>© 2025 Seasonwala Cafe. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- WhatsApp Float -->
-    <a href="https://wa.me/919876543210?text=Namaste!%20I'd%20like%20to%20know%20today's%20menu%20at%20Seasonwala%20Cafe" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/919755342599?text=Namaste!%20I'd%20like%20to%20know%20today's%20menu%20at%20Seasonwala%20Cafe" class="whatsapp-float" target="_blank">
         WhatsApp
     </a>
+
+    <script>
+        function generateComplaint() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value || 'Not provided';
+            const order = document.getElementById('order').value || 'Not provided';
+            const message = document.getElementById('message').value;
+
+            if (!name || !email || !message) {
+                alert("Please fill Name, Email & Message!");
+                return;
+            }
+
+            const body = `Subject: Urgent Complaint - Seasonwala Cafe Katni
+
+Dear Seasonwala Team,
+
+I am raising a complaint regarding my recent visit.
+
+Customer Details:
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Order/Date: ${order}
+
+Issue:
+${message}
+
+I have attached photo proof of the issue.
+
+Request:
+- Immediate investigation
+- Apology & refund/replacement
+- Assure no repeat
+
+Please resolve within 24 hours.
+
+Thank you,
+${name}`;
+
+            document.getElementById('complaintBody').value = body;
+            document.getElementById('complaintOutput').style.display = 'block';
+            document.getElementById('complaintOutput').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copyComplaint() {
+            const textarea = document.getElementById('complaintBody');
+            textarea.select();
+            document.execCommand('copy');
+            alert('Copied! Now paste in Gmail.');
+        }
+
+        // FIXED: This forces Gmail APP on Android/iOS & web on desktop
+        function openGmailApp() {
+            const to = "hello@seasonwala.com";
+            const subject = "Urgent Complaint - Seasonwala Cafe Katni";
+            const body = encodeURIComponent(document.getElementById('complaintBody').value);
+            
+            // This link works on ALL devices
+            const gmailUrl = `https://mail.google.com/mail/u/0/?view=cm&fs=1&to=${to}&su=${encodeURIComponent(subject)}&body=${body}`;
+            const fallbackUrl = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
+            
+            // Try Gmail app first
+            window.location.href = gmailUrl;
+            
+            // Fallback after 2 seconds if app doesn't open
+            setTimeout(() => {
+                window.open(fallbackUrl, '_blank');
+            }, 2000);
+        }
+
+        // Photo Preview
+        document.getElementById('photo').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    document.getElementById('photoPreview').innerHTML = `<img src="${e.target.result}" style="max-width:100%; border-radius:12px; margin-top:10px;" />`;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 
 </body>
 </html>
